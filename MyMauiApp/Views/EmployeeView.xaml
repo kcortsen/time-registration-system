@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyMauiApp.Views.EmployeeView">
+
+    <VerticalStackLayout Padding="10">
+        <Label Text="Employees" FontSize="20" />
+        <CollectionView ItemsSource="{Binding EmployeeList}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <VerticalStackLayout>
+                        <Label Text="{Binding Name}" />
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Label Text="Add New Employee" FontSize="20" />
+        <Entry Placeholder="Name" Text="{Binding NewEmployee.Name}" />
+        <Entry Placeholder="Initials" Text="{Binding NewEmployee.Initials}" />
+        <Entry Placeholder="CPR Number" Text="{Binding NewEmployee.CPRNumber}" />
+
+        <Label Text="Select Department" />
+        <Picker ItemsSource="{Binding DepartmentList}"
+                ItemDisplayBinding="{Binding Name}"
+                SelectedItem="{Binding SelectedDepartment}" />
+
+        <Button Text="Save Employee" Command="{Binding SaveEmployeeCommand}" />
+    </VerticalStackLayout>
+</ContentPage>
