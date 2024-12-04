@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
+using SharedLibrary.Backend.BusinessLogic;
 
 namespace SharedLibrary.Backend.DataAccess
 {
@@ -8,7 +9,7 @@ namespace SharedLibrary.Backend.DataAccess
         public AppDbContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
-            optionsBuilder.UseSqlite("Data Source=database.db"); // Ensure this matches your setup
+            optionsBuilder.UseSqlite("Data Source=/Users/kristinacortsen/RiderProjects/registration-system/SharedLibrary/database.db"); 
 
             return new AppDbContext(optionsBuilder.Options);
         }

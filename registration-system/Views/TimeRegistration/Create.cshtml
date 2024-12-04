@@ -1,18 +1,38 @@
-@model TModel
+@model SharedLibrary.Backend.DataAccess.TimeRegistration
 
 @{
-    Layout = null;
+    ViewData["Title"] = "Create time registration";
 }
 
-<!DOCTYPE html>
+<h1>Create time registration</h1>
 
-<html>
-<head>
-    <title>title</title>
-</head>
-<body>
-<div>
-      
-</div>
-</body>
-</html>
+@using (Html.BeginForm("Create", "TimeRegistration", FormMethod.Post))
+{
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.EmployeeID, "Employee", new { @class = "control-label" })
+        @Html.DropDownListFor(model => model.EmployeeID, (SelectList)ViewBag.Employees, "Select employee", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.EmployeeID, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CaseID, "Case", new { @class = "control-label" })
+        @Html.DropDownListFor(model => model.CaseID, (SelectList)ViewBag.Cases, "Select case", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.CaseID, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.StartTime, new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.StartTime, new { @class = "form-control", type = "datetime-local" })
+        @Html.ValidationMessageFor(model => model.StartTime, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.EndTime, new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.EndTime, new { @class = "form-control", type = "datetime-local" })
+        @Html.ValidationMessageFor(model => model.EndTime, "", new { @class = "text-danger" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+}

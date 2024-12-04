@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using SharedLibrary.Backend.DataAccess;
 
-namespace SharedLibrary.Backend.DataAccess;
+namespace SharedLibrary.Backend.BusinessLogic;
 
 public class AppDbContext : DbContext
 {
@@ -15,7 +16,7 @@ public class AppDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlite("Data Source=database.db");
+        optionsBuilder.UseSqlite("Data Source=/Users/kristinacortsen/RiderProjects/registration-system/SharedLibrary/database.db");
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
