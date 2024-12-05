@@ -17,11 +17,6 @@ public class CaseService
         return _context.Cases.Include(c => c.Department).ToList();
     }
 
-    public Case? GetCaseById(int id)
-    {
-        return _context.Cases.Include(c => c.Department).FirstOrDefault(c => c.CaseID == id);
-    }
-
     public void AddCase(Case caseEntity)
     {
         if (!_context.Departments.Any(d => d.DepartmentID == caseEntity.DepartmentID))

@@ -50,14 +50,4 @@ public class TimeRegistrationService
         _context.TimeRegistrations.Add(registration);
         _context.SaveChanges();
     }
-
-    public void DeleteTimeRegistration(int id)
-    {
-        var registration = _context.TimeRegistrations.Find(id);
-        if (registration == null)
-            throw new Exception("Time registration not found");
-
-        _context.TimeRegistrations.Remove(registration);
-        _context.SaveChanges();
-    }
 }

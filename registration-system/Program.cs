@@ -6,11 +6,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlite("Data Source=/Users/kristinacortsen/RiderProjects/registration-system/SharedLibrary/database.db"));
+    options.UseSqlite(
+        "Data Source=/Users/kristinacortsen/RiderProjects/registration-system/SharedLibrary/database.db"));
 
 builder.Services.AddScoped<EmployeeService>();
 builder.Services.AddScoped<CaseService>();
-builder.Services.AddScoped<TimeRegistrationService>();  
+builder.Services.AddScoped<TimeRegistrationService>();
 
 builder.Services.AddControllersWithViews()
     .AddRazorOptions(options =>
@@ -25,10 +26,10 @@ builder.Services.AddEndpointsApiExplorer();
 var app = builder.Build();
 
 
- if (!app.Environment.IsDevelopment())
+if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-     app.UseHsts();
+    app.UseHsts();
 }
 
 app.UseHttpsRedirection();

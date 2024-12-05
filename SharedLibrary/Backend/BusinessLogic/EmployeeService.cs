@@ -17,11 +17,6 @@ public class EmployeeService
         return _context.Employees.Include(e => e.Department).ToList();
     }
 
-    public Employee? GetEmployeeById(int id)
-    {
-        return _context.Employees.Include(e => e.Department).FirstOrDefault(e => e.EmployeeID == id);
-    }
-
     public void AddEmployee(Employee employee)
     {
         if (_context.Employees.Any(e => e.Initials == employee.Initials))
