@@ -3,6 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MyMauiApp.MainPage">
     <VerticalStackLayout>
-        <Button Text="Administrer medarbejdere" Clicked="OnNavigateToEmployees" />
+        <Button Text="Manage employees" Clicked="OnNavigateToEmployees" />
+        <Button Text="Overview of employees and time registrations" Clicked="OnNavigateToOverview" />
+        <Button Text="Summary of time registrations" Clicked="OnNavigateToSummary" />
+        <Button Text="Manage cases" Clicked="OnNavigateToCases" />
     </VerticalStackLayout>
 </ContentPage>

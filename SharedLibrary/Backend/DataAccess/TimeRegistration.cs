@@ -11,6 +11,6 @@ public class TimeRegistration
     public int EmployeeID { get; set; }
     public Employee? Employee { get; set; }
 
-    public int? CaseID { get; set; } 
+    public int? CaseID { get; set; }
     public Case? Case { get; set; }
 }

@@ -28,7 +28,8 @@ public class CaseService
         {
             throw new Exception("Invalid department ID");
         }
-        caseEntity.Department = null; 
+
+        caseEntity.Department = null;
         _context.Cases.Add(caseEntity);
         _context.SaveChanges();
     }
@@ -43,6 +44,8 @@ public class CaseService
         existingCase.Description = caseEntity.Description;
         existingCase.DepartmentID = caseEntity.DepartmentID;
 
+        _context.Cases.Attach(caseEntity);
+        _context.Entry(caseEntity).State = EntityState.Modified;
         _context.SaveChanges();
     }
 

@@ -11,13 +11,14 @@ public class TimeRegistrationController : Controller
     private readonly EmployeeService _employeeService;
     private readonly CaseService _caseService;
 
-    public TimeRegistrationController(TimeRegistrationService service, EmployeeService employeeService, CaseService caseService)
+    public TimeRegistrationController(TimeRegistrationService service, EmployeeService employeeService,
+        CaseService caseService)
     {
         _service = service;
         _employeeService = employeeService;
         _caseService = caseService;
     }
-        
+
     public IActionResult Create()
     {
         ViewBag.Employees = new SelectList(_employeeService.GetAllEmployees(), "EmployeeID", "Name");

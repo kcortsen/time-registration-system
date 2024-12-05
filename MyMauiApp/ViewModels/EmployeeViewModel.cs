@@ -1,15 +1,12 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Input;
-using Microsoft.EntityFrameworkCore;
 using SharedLibrary.Backend.BusinessLogic;
 using SharedLibrary.Backend.DataAccess;
 
-namespace MyMauiApp.ViewModels;
-
 public class EmployeeViewModel : INotifyPropertyChanged
 {
-    private readonly AppDbContext _context;
+    private readonly EmployeeService _employeeService;
 
     public ObservableCollection<Employee> EmployeeList { get; set; }
     public ObservableCollection<Department> DepartmentList { get; set; }
@@ -19,12 +16,12 @@ public class EmployeeViewModel : INotifyPropertyChanged
 
     public ICommand SaveEmployeeCommand { get; }
 
-    public EmployeeViewModel(AppDbContext context)
+    public EmployeeViewModel(EmployeeService employeeService)
     {
-        _context = context;
+        _employeeService = employeeService;
 
-        EmployeeList = new ObservableCollection<Employee>(_context.Employees.Include(e => e.Department).ToList());
-        DepartmentList = new ObservableCollection<Department>(_context.Departments.ToList());
+        EmployeeList = new ObservableCollection<Employee>(_employeeService.GetAllEmployees());
+        DepartmentList = new ObservableCollection<Department>(_employeeService.GetAllDepartments());
 
         SaveEmployeeCommand = new Command(SaveEmployee);
     }
@@ -34,11 +31,10 @@ public class EmployeeViewModel : INotifyPropertyChanged
         try
         {
             if (SelectedDepartment == null)
-                throw new Exception("You need to select a department");
+                throw new Exception("You must select a department");
 
             NewEmployee.DepartmentID = SelectedDepartment.DepartmentID;
-            _context.Employees.Add(NewEmployee);
-            _context.SaveChanges();
+            _employeeService.AddEmployee(NewEmployee);
 
             EmployeeList.Add(NewEmployee);
 

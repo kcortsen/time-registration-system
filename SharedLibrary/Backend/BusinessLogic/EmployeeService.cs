@@ -57,4 +57,9 @@ public class EmployeeService
         _context.Employees.Remove(employee);
         _context.SaveChanges();
     }
+
+    public List<Department> GetAllDepartments()
+    {
+        return _context.Departments.ToList();
+    }
 }

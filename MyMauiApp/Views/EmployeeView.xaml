@@ -16,7 +16,7 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
 
-        <Label Text="Add New Employee" FontSize="20" />
+        <Label Text="Add new employee" FontSize="20" />
         <Entry Placeholder="Name" Text="{Binding NewEmployee.Name}" />
         <Entry Placeholder="Initials" Text="{Binding NewEmployee.Initials}" />
         <Entry Placeholder="CPR Number" Text="{Binding NewEmployee.CPRNumber}" />

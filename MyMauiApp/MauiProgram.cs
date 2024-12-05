@@ -24,6 +24,14 @@ public static class MauiProgram
 #endif
         builder.Services.AddTransient<EmployeeView>();
         builder.Services.AddTransient<EmployeeViewModel>();
+        builder.Services.AddTransient<OverviewViewModel>();
+        builder.Services.AddTransient<OverviewView>();
+        builder.Services.AddScoped<TimeRegistrationService>();
+        builder.Services.AddTransient<SummaryViewModel>();
+        builder.Services.AddTransient<SummaryView>();
+        builder.Services.AddTransient<CaseService>();
+        builder.Services.AddTransient<CaseViewModel>();
+        builder.Services.AddTransient<CaseView>();
 
         builder.Services.AddDbContext<AppDbContext>(options =>
             options.UseSqlite(
