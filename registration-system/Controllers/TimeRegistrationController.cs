@@ -35,8 +35,7 @@ public class TimeRegistrationController : Controller
             try
             {
                 _service.AddTimeRegistration(registration);
-                return RedirectToAction(nameof(Index));
-            }
+                return RedirectToAction("Index", "Home");            }
             catch (Exception ex)
             {
                 ModelState.AddModelError(string.Empty, ex.Message);

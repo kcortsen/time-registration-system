@@ -42,7 +42,5 @@ public static class MauiProgram
         var app = builder.Build();
         ServiceProviderHelper.Initialize(app.Services);
         return app;
-
-        return builder.Build();
     }
 }
